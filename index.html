@@ -4,255 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Briefing">
-  <title>Morning Briefing — Saturday 6 June 2026</title>
+  <title>Morning Briefing</title>
   <style>
     :root { color-scheme: light }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; background: #f5f5f0; color: #1a1a1a; min-height: 100vh; }
-    .hdr { background: #1a1a2e; padding: 22px 24px 18px; }
-    .hdr-label { font-size: 11px; color: #8888aa; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 4px; }
-    .hdr-title { font-size: 24px; font-weight: 700; color: #fff; letter-spacing: -0.3px; margin-bottom: 4px; }
-    .hdr-sub { font-size: 13px; color: #8888aa; }
-    .section { padding: 18px 16px 4px; }
-    .section-title { font-size: 10px; font-weight: 700; color: #888; letter-spacing: 1.4px; text-transform: uppercase; border-bottom: 2px solid #e4e4de; padding-bottom: 8px; margin-bottom: 12px; }
-    .story { background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
-    .story-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 7px; }
-    .badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; letter-spacing: 0.3px; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; background: #f5f5f0; color: #1a1a1a; }
+    .sticky-top { position: sticky; top: 0; z-index: 100; }
+    .hdr { background: #1a1a2e; padding: 14px 20px 0; padding-top: calc(14px + env(safe-area-inset-top)); }
+    .hdr-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+    .hdr-label { font-size: 10px; color: #8888aa; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 3px; }
+    .hdr-title { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+    .hdr-time { font-size: 11px; color: #8888aa; text-align: right; padding-top: 4px; }
+    .tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 12px; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { flex-shrink: 0; padding: 6px 14px; border: none; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap; -webkit-tap-highlight-color: transparent; }
+    .tab.active { background: #fff; color: #1a1a2e; }
+    .section { display: none; padding: 14px 14px 4px; }
+    .section.active { display: block; }
+    .section-inner { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+    .story { background: #fff; border-radius: 12px; padding: 13px 15px; margin-bottom: 9px; }
+    .story-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 6px; }
+    .badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
     .badge-afcb { background: #cc0000; color: #fff; }
     .badge-ft { background: #f0f0ea; color: #888; border: 1px solid #ddd; }
-    .badge-breaking { background: #e85d00; color: #fff; }
     .source { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.3px; }
-    .story a { display: block; font-size: 15px; font-weight: 600; color: #1a1a2e; text-decoration: none; line-height: 1.42; margin-bottom: 5px; }
-    .story a:hover { text-decoration: underline; }
+    .story a { display: block; font-size: 15px; font-weight: 600; color: #1a1a2e; text-decoration: none; line-height: 1.4; margin-bottom: 5px; }
+    .story a:active { opacity: 0.6; }
     .story p { font-size: 13px; color: #555; line-height: 1.55; }
-    .why { font-size: 12px; color: #999; margin-top: 4px; font-style: italic; }
-    .feedback { margin: 16px 16px 4px; background: #eeeee8; border-radius: 10px; padding: 14px 16px; font-size: 13px; color: #666; line-height: 1.55; }
+    .why { font-size: 12px; color: #999; margin-top: 5px; font-style: italic; }
+    .placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 24px; text-align: center; gap: 10px; }
+    .placeholder-icon { font-size: 40px; }
+    .placeholder h2 { font-size: 17px; font-weight: 600; color: #333; }
+    .placeholder p { font-size: 14px; color: #888; line-height: 1.5; }
+    .feedback { margin: 8px 0 0; background: #eeeee8; border-radius: 10px; padding: 13px 15px; font-size: 13px; color: #666; line-height: 1.55; }
     .feedback strong { color: #444; }
-    .footer { padding: 14px 16px 20px; text-align: center; font-size: 11px; color: #bbb; }
+    .footer { padding: 12px 0 4px; text-align: center; font-size: 11px; color: #bbb; }
   </style>
 </head>
 <body>
-<div class="hdr">
-  <div class="hdr-label">Morning Briefing</div>
-  <div class="hdr-title">Good morning, Tristan</div>
-  <div class="hdr-sub">Saturday, 6 June 2026 &nbsp;·&nbsp; Updated 08:58</div>
-</div>
-
-<!-- MAINSTREAM NEWS -->
-<div class="section">
-  <div class="section-title">📰 &nbsp;Mainstream News</div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="badge badge-breaking">BREAKING</span>
-      <span class="source">Al Jazeera / NPR / Washington Post</span>
+<div class="sticky-top">
+  <div class="hdr">
+    <div class="hdr-top">
+      <div>
+        <div class="hdr-label">Morning Briefing</div>
+        <div class="hdr-title">Good morning, Tristan</div>
+      </div>
+      <div class="hdr-time">Awaiting<br>first run</div>
     </div>
-    <a href="https://www.aljazeera.com/news/2026/6/3/iranian-drone-hits-kuwaits-main-airport-after-us-strikes-qeshm-island">US strikes Iranian radar sites on Qeshm Island — Kuwait airport hit by drones, flights suspended</a>
-    <p>Overnight escalation: US forces struck Iranian coastal surveillance radar sites on Qeshm Island and in Goruk after shooting down four Iranian drones aimed at the Strait of Hormuz. Iran retaliated, firing missiles and drones at Kuwait and Bahrain — one person was killed and Kuwait International Airport was severely damaged, forcing suspension of all flights. Iran's Revolutionary Guard disputes responsibility, claiming damage was from a failed US interceptor. CENTCOM called the claim "false."</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">CNN / NPR</span>
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('news',this)">&#x1F4F0; News</button>
+      <button class="tab" onclick="showTab('finance',this)">&#x1F4B0; Finance</button>
+      <button class="tab" onclick="showTab('ai',this)">&#x1F916; AI</button>
+      <button class="tab" onclick="showTab('football',this)">&#x26BD; Football</button>
+      <button class="tab" onclick="showTab('foryou',this)">&#x1F30D; For You</button>
     </div>
-    <a href="https://www.cnn.com/2026/06/05/world/live-news/iran-trump-lebanon-israel-war-news">US House votes to end the Iran war — breaking with Trump administration</a>
-    <p>In a significant political split, the House of Representatives passed a resolution to end US military involvement in the Iran conflict, demonstrating a fracture between Congress and the Trump White House. The Senate separately passed Trump's immigration enforcement funding bill early Friday after weeks of delays.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">Reuters / BBC News</span>
-    </div>
-    <a href="https://www.aljazeera.com/">Russia's overnight barrage on Ukraine kills 18 — 73 missiles, 656 drones</a>
-    <p>One of the largest single-night attacks of the conflict struck Kyiv, Dnipro, Zaporizhzhia, Poltava, and Kharkiv. Ukraine's air defences intercepted the majority of munitions. The scale of the attack drew sharp condemnation from European allies.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">Reuters / BBC</span>
-    </div>
-    <a href="https://www.cnn.com/2026/06/05/world/live-news/iran-trump-lebanon-israel-war-news">More than 20 killed in Israeli strikes in Lebanon as Hezbollah clashes intensify</a>
-    <p>Israeli strikes killed over 20 people in Lebanon on Friday as clashes with Hezbollah intensified following Hezbollah's rejection of the Lebanon-Israel ceasefire deal brokered by the Lebanese government.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">BBC News</span>
-    </div>
-    <a href="https://www.bbc.co.uk/news/business">Bank of England holds rate at 3.75% — warns Iran war will push inflation higher</a>
-    <p>The BoE kept rates unchanged but signalled the ongoing Iran conflict will drive inflation higher in the near term, complicating any path to further cuts. The FTSE 100 has already crossed 10,000 for the first time in its history, though geopolitical risk tempers the celebration.</p>
   </div>
 </div>
-
-<!-- FINANCIAL NEWS -->
-<div class="section">
-  <div class="section-title">💰 &nbsp;Financial News</div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="badge badge-breaking">BREAKING</span>
-      <span class="source">Yahoo Finance / GuruFocus / Bloomberg</span>
-    </div>
-    <a href="https://finance.yahoo.com/markets/stocks/articles/chip-selloff-erases-over-1-195406803.html">$1.3 trillion wiped from chip stocks in one day — Philadelphia Semi Index worst drop since 2020</a>
-    <p>The Philadelphia Semiconductor Index fell 10.3% on Friday, its steepest single-day loss since March 2020. Nvidia shed ~$300bn in market cap (down 6%), Broadcom crashed 13% after its AI networking revenue of $4.1bn missed expectations of $4.8bn, Micron fell 11%, and AMD was down double digits. The selloff questions whether AI chip demand has been priced too optimistically heading into 2026.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">CNBC / Bloomberg</span>
-    </div>
-    <a href="https://www.cnbc.com/2026/06/03/stock-market-today-live-updates.html">Dow hits record 51,561 as jobs growth doubles expectations — but rate fears bite Nasdaq</a>
-    <p>US jobs growth hit 172,000 in May (roughly double forecasts), sending the Dow up 875 points to a fresh all-time high. But the Nasdaq slipped as the strong data pushed 10-year Treasury yields above 4.54%, reviving fears the Fed will hold rates higher for longer. Futures now price in zero cuts for 2026.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">Bloomberg</span>
-    </div>
-    <a href="https://www.cnbc.com/">SpaceX IPO roadshow launches — targeting $75bn, pricing June 11</a>
-    <p>SpaceX kicked off its investor roadshow, targeting up to $75bn in proceeds at a ~$1.75 trillion valuation — which would make it the largest IPO in recorded history if it prices at target. Trading opens on Nasdaq (SPCX) June 12.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="badge badge-ft">FT · headline only</span>
-      <span class="source">Financial Times</span>
-    </div>
-    <a href="https://www.ft.com/">FTSE 100 crosses 10,000 for the first time</a>
-    <p>London's flagship index crossed the historic milestone, though the Bank of England's inflation warnings and Iran war uncertainty are already tempering investor optimism about how long it can hold above the level.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">Reuters</span>
-    </div>
-    <a href="https://www.cnbc.com/2026/06/03/stock-market-today-live-updates.html">Quantinuum raises $1.68bn in upsized quantum computing IPO at $68/share</a>
-    <p>The quantum computing firm upsized its offering and priced above range, signalling that investor appetite for deep-tech remains intact even as AI sentiment wobbles — at least for companies with tangible near-term applications.</p>
-  </div>
-</div>
-
-<!-- AI NEWS -->
-<div class="section">
-  <div class="section-title">🤖 &nbsp;AI News</div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">OpenAI / The Verge</span>
-    </div>
-    <a href="https://openai.com/index/chatgpt-memory-dreaming/">ChatGPT's biggest memory overhaul: Dreaming V3 rolls out to Plus and Pro users</a>
-    <p>OpenAI's new "Dreaming V3" architecture runs background synthesis after every conversation, automatically building and updating your profile without any prompting — tracking what's stale (trips you've taken, projects that finished) as well as what's current. 5× more compute-efficient than the old system, enabling an eventual free-tier rollout. Privacy researchers are already raising concerns about unilateral profile-building.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">TechCrunch / Anthropic</span>
-    </div>
-    <a href="https://techcrunch.com/2026/06/01/anthropic-files-to-go-public/">Anthropic files confidential IPO S-1 at $965bn valuation — calls for industry-wide AI pause framework</a>
-    <p>Anthropic confidentially filed its S-1 with the SEC (revenue run-rate ~$47bn/month, $65bn Series H). In a separate move, the company is urging all frontier AI labs to agree on a coordinated mechanism to slow or pause development if systems begin self-improving faster than society can manage — arguing unilateral action won't be enough. Notable: Anthropic pays SpaceX $1.25bn/month for compute.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">Roll Call / Ars Technica</span>
-    </div>
-    <a href="https://rollcall.com/2026/06/04/bipartisan-ai-draft-proposes-three-year-preemption-of-state-laws/">Congress drops 269-page "Great American AI Act" — would freeze state AI laws for 3 years</a>
-    <p>Reps. Obernolte and Trahan unveiled the most comprehensive federal AI framework ever proposed in the US, including a three-year preemption of all state AI regulation. Labour unions immediately rejected it as an industry giveaway; tech groups praised it. Still a discussion draft — a long way from law, and Colorado's law (the first of its kind in the US) goes live June 30.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">CNBC / Microsoft</span>
-    </div>
-    <a href="https://www.cnbc.com/2026/06/02/microsoft-unveils-new-ai-models-lessen-reliance-on-openai-lower-costs.html">Microsoft unveils 7 in-house MAI models at Build 2026 — signalling independence from OpenAI</a>
-    <p>The MAI family (MAI-Code-1-Flash, MAI-Image-2.5, MAI-Transcribe-1.5, MAI-Voice-2 and more) are trained entirely in-house. MAI-Transcribe-1.5 claims 5× faster accuracy than rivals across 43 languages; MAI-Image-2.5 ranks above Gemini in the Arena leaderboard. Timing — weeks before OpenAI's IPO — is deliberate.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">Build Fast with AI / LLM Stats</span>
-    </div>
-    <a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-6-2026">Alibaba's Qwen 3.7 Max matches Claude on benchmarks at half the price — Sonnet 4.8 leak adds pressure</a>
-    <p>Qwen 3.7 Max scores within striking distance of Claude Opus 4.7 on agentic benchmarks at ~$1.50/$6 per million tokens vs Claude Sonnet 4.6's $3/$15. A source-map accidentally shipped in the Claude Code npm package suggests Sonnet 4.8 is targeting mid-June — a release that could significantly reset enterprise pricing if it arrives at reduced cost.</p>
-  </div>
-</div>
-
-<!-- FOOTBALL -->
-<div class="section">
-  <div class="section-title">⚽ &nbsp;Football</div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="badge badge-afcb">AFCB</span>
-      <span class="source">AFC Bournemouth / Premier League</span>
-    </div>
-    <a href="https://www.premierleague.com/en/news/4673195/the-briefing-bournemouths-rose-era-begins-latest-transfer-news-and-more/">Marco Rose era begins — new Cherries boss gives first in-club interview</a>
-    <p>Marco Rose (ex-Dortmund, Mönchengladbach, RB Leipzig) spoke to AFCB media on Thursday in his first official appearance since replacing Iraola. He praised the squad's "individual quality" and an "experienced captain in Adam Smith," and confirmed backroom staff Marco Kurth and Frank Geideck will join him. Transfer business expected to build in the coming weeks.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="badge badge-afcb">AFCB</span>
-      <span class="source">Sky Sports</span>
-    </div>
-    <a href="https://www.skysports.com/bournemouth">Iraola confirmed as Liverpool head coach — reportedly taking four Bournemouth backroom staff with him</a>
-    <p>Andoni Iraola, who guided Bournemouth to their historic 6th-place finish and first European campaign, has been confirmed as Liverpool's new head coach succeeding Arne Slot. Reports suggest he wants to bring four members of his Vitality Stadium backroom team to Anfield.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="badge badge-afcb">AFCB</span>
-      <span class="source">Sky Sports</span>
-    </div>
-    <a href="https://www.skysports.com/bournemouth">Bournemouth owners' Exeter Chiefs rugby takeover approved by Premiership Rugby</a>
-    <p>The ownership group behind AFC Bournemouth has received approval to acquire Exeter Chiefs, expanding into rugby union and building on an increasingly ambitious multi-sport portfolio.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">Premier League / ESPN</span>
-    </div>
-    <a href="https://www.premierleague.com/en/transfers/2026-27/summer">Transfer window opens June 15, fixture list drops June 19 — World Cup kicks off in 5 days</a>
-    <p>The summer window opens officially Monday 15 June; the 2026/27 fixture list releases Friday 19 June at 10:00 BST. The World Cup starts June 11, pushing the new Premier League season back to 22 August. Promoted sides: Coventry City, Ipswich Town, Hull City.</p>
-  </div>
-</div>
-
-<!-- ALSO WORTH KNOWING -->
-<div class="section">
-  <div class="section-title">🌍 &nbsp;Also Worth Knowing</div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">Nature / Scientific American</span>
-    </div>
-    <a href="https://www.scientificamerican.com/">AI-designed universal coronavirus vaccine passes first human trial safely</a>
-    <p>Scientists successfully tested an AI-designed vaccine that generated immune responses against multiple coronaviruses including SARS-CoV-2 — no safety issues in the first human trial. The same class of technology driving AI assistants is now being applied to pandemic preparedness, cutting the design cycle from years to months.</p>
-    <p class="why">Why I picked this: The same AI wave reshaping software is now doing it for drug discovery — and this is the first time an AI-designed broad-spectrum coronavirus vaccine has reached human testing.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">NASA / Science News</span>
-    </div>
-    <a href="https://www.sciencenews.org/">Webb telescope detects methane on interstellar comet 3I/ATLAS — a first for any visitor from another star</a>
-    <p>The James Webb Space Telescope has identified methane in interstellar comet 3I/ATLAS — the first time the molecule has been directly detected on an object from outside our solar system. Only the third interstellar object ever found, it's giving scientists their first real chemical read on another planetary system.</p>
-    <p class="why">Why I picked this: We're reading the chemistry of another star system from an object that fell into ours — science fiction made real, and it happened this week.</p>
-  </div>
-
-  <div class="story">
-    <div class="story-meta">
-      <span class="source">Science News / Dartmouth</span>
-    </div>
-    <a href="https://www.sciencenews.org/">Octopuses learn to use mirrors to find hidden food — joining a very exclusive vertebrate club</a>
-    <p>Dartmouth researchers showed octopuses can use mirror reflections to locate food hidden from their direct line of sight — a skill previously documented only in vertebrates like apes, dolphins, and corvids. Octopuses share no common ancestor with any of those animals, which makes the convergent evolution even stranger.</p>
-    <p class="why">Why I picked this: Every octopus cognition study is a gift. Independent evolution of the same sophisticated visual reasoning in a mollusc is genuinely puzzling science.</p>
-  </div>
-</div>
-
-<div class="feedback">
-  <strong>💬 Refine tomorrow's briefing</strong><br>
-  Open Claude and say things like "skip crypto news", "more science please", or "not interested in US politics" — I'll update your preferences for the next morning.
-</div>
-<div class="footer">tristanabc.github.io/briefing &nbsp;·&nbsp; Delivered by Claude</div>
+<div id="tab-news" class="section active"><div class="section-inner"><div class="placeholder"><div class="placeholder-icon">&#x1F4F0;</div><h2>First briefing not yet delivered</h2><p>Runs every morning at 6:35am and will fill each section with today&#39;s news.</p></div></div></div>
+<div id="tab-finance" class="section"><div class="section-inner"><div class="placeholder"><div class="placeholder-icon">&#x1F4B0;</div><h2>First briefing not yet delivered</h2><p>Bloomberg, FT headlines, and Reuters will appear here each morning.</p></div></div></div>
+<div id="tab-ai" class="section"><div class="section-inner"><div class="placeholder"><div class="placeholder-icon">&#x1F916;</div><h2>First briefing not yet delivered</h2><p>AI news from TLDR, The Verge, and Ars Technica will appear here each morning.</p></div></div></div>
+<div id="tab-football" class="section"><div class="section-inner"><div class="placeholder"><div class="placeholder-icon">&#x26BD;</div><h2>First briefing not yet delivered</h2><p>Premier League and Bournemouth AFC news from Sky Sports and BBC Sport will appear here.</p></div></div></div>
+<div id="tab-foryou" class="section"><div class="section-inner"><div class="placeholder"><div class="placeholder-icon">&#x1F30D;</div><h2>First briefing not yet delivered</h2><p>A curated selection of interesting stories from science, tech, culture, and world events.</p></div><div class="feedback"><strong>&#x1F4AC; Refine tomorrow&#39;s briefing</strong><br>Open Claude and say things like &quot;skip crypto news&quot; or &quot;more science please&quot;.</div><div class="footer">tristanabc.github.io/briefing &middot; Delivered by Claude</div></div></div>
+<script>
+function showTab(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');window.scrollTo(0,0);}
+const last=sessionStorage.getItem('tab');if(last){const btn=document.querySelector('[onclick*="'+last+'"]');if(btn)showTab(last,btn);}
+document.querySelectorAll('.tab').forEach(btn=>{btn.addEventListener('click',()=>{const id=btn.getAttribute('onclick').match(/'(w+)'/)[1];sessionStorage.setItem('tab',id);});});
+</script>
 </body>
 </html>
