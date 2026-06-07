@@ -49,11 +49,11 @@
       <div class="hdr-time">Sunday<br>7 Jun<br>7:00am</div>
     </div>
     <div class="tabs">
-      <button class="tab active" onclick="showTab('news',this)">&#x1F4F0; News</button>
-      <button class="tab" onclick="showTab('finance',this)">&#x1F4B0; Finance</button>
-      <button class="tab" onclick="showTab('ai',this)">&#x1F916; AI</button>
-      <button class="tab" onclick="showTab('football',this)">&#x26BD; Football</button>
-      <button class="tab" onclick="showTab('foryou',this)">&#x1F30D; For You</button>
+      <button class="tab active" data-tab="news" onclick="showTab('news',this)">&#x1F4F0; News</button>
+      <button class="tab" data-tab="finance" onclick="showTab('finance',this)">&#x1F4B0; Finance</button>
+      <button class="tab" data-tab="ai" onclick="showTab('ai',this)">&#x1F916; AI</button>
+      <button class="tab" data-tab="football" onclick="showTab('football',this)">&#x26BD; Football</button>
+      <button class="tab" data-tab="foryou" onclick="showTab('foryou',this)">&#x1F30D; For You</button>
     </div>
   </div>
 </div>
@@ -271,8 +271,8 @@
 
 <script>
 function showTab(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');window.scrollTo(0,0);}
-const last=sessionStorage.getItem('tab');if(last){const btn=document.querySelector('[onclick*="'"+last+"'"]');if(btn)showTab(last,btn);}
-document.querySelectorAll('.tab').forEach(btn=>{btn.addEventListener('click',()=>{const id=btn.getAttribute('onclick').match(/'(\w+)'/)[1];sessionStorage.setItem('tab',id);});});
+var st=sessionStorage.getItem('tab');if(st){var sb=document.querySelector('.tab[data-tab="'+st+'"]');if(sb)showTab(st,sb);}
+document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){sessionStorage.setItem('tab',b.getAttribute('data-tab'));});});
 </script>
 </body>
 </html>
