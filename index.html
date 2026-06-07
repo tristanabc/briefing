@@ -6,87 +6,39 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Briefing">
-  <title>Morning Briefing — Saturday 6 June 2026</title>
+  <title>Morning Briefing — Sunday 7 June</title>
   <style>
-    :root { color-scheme: light }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; background: #f5f5f0; color: #1a1a1a; }
-
-    .hdr { background: #1a1a2e; padding: 14px 20px 0; padding-top: calc(14px + env(safe-area-inset-top)); }
-    .hdr-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
-    .hdr-label { font-size: 10px; color: #8888aa; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 3px; }
-    .hdr-title { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
-    .hdr-time { font-size: 11px; color: #8888aa; text-align: right; padding-top: 4px; }
-
-    /* Tab bar — emoji only, fits without scrolling */
-    .tabs { display: flex; gap: 8px; padding-bottom: 12px; justify-content: space-between; }
-    .tab {
-      flex: 1;
-      padding: 7px 4px;
-      border: none;
-      background: rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.7);
-      border-radius: 10px;
-      font-size: 18px;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      text-align: center;
-    }
-    .tab.active { background: #fff; }
-
-    .sticky-top { position: sticky; top: 0; z-index: 100; }
-
-    .section { display: none; padding: 12px 12px 4px; }
-    .section.active { display: block; }
-    .section-inner { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
-
-    /* Story card — collapsed by default */
-    .story {
-      background: #fff;
-      border-radius: 12px;
-      padding: 12px 14px;
-      margin-bottom: 8px;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .story-meta {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-bottom: 5px;
-    }
-    .badge { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; }
-    .badge-afcb { background: #cc0000; color: #fff; }
-    .badge-ft { background: #f0f0ea; color: #888; border: 1px solid #ddd; }
-    .badge-breaking { background: #e85d00; color: #fff; }
-    .source { font-size: 10px; font-weight: 600; color: #aaa; text-transform: uppercase; letter-spacing: 0.3px; }
-    .caret { margin-left: auto; font-size: 13px; color: #ccc; flex-shrink: 0; transition: transform 0.15s; line-height: 1; padding-left: 6px; }
-    .story.open .caret { transform: rotate(90deg); }
-
-    .story a {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      color: #1a1a2e;
-      text-decoration: none;
-      line-height: 1.42;
-    }
-    .story a:active { opacity: 0.6; }
-
-    /* Summary — hidden until expanded */
-    .story-body { display: none; margin-top: 8px; padding-top: 8px; border-top: 1px solid #f0f0ec; }
-    .story.open .story-body { display: block; }
-    .story-body p { font-size: 13px; color: #555; line-height: 1.55; }
-    .why { font-size: 12px; color: #999; margin-top: 5px; font-style: italic; }
-
-    .feedback { margin: 8px 0 0; background: #eeeee8; border-radius: 10px; padding: 13px 15px; font-size: 13px; color: #666; line-height: 1.55; }
-    .feedback strong { color: #444; }
-    .footer { padding: 12px 0 4px; text-align: center; font-size: 11px; color: #bbb; }
+    :root{color-scheme:light}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;background:#f5f5f0;color:#1a1a1a}
+    .sticky-top{position:sticky;top:0;z-index:100}
+    .hdr{background:#1a1a2e;padding:14px 20px 0;padding-top:calc(14px + env(safe-area-inset-top))}
+    .hdr-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+    .hdr-label{font-size:10px;color:#8888aa;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:3px}
+    .hdr-title{font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.3px}
+    .hdr-time{font-size:11px;color:#8888aa;text-align:right;padding-top:4px}
+    .tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:12px}
+    .tabs::-webkit-scrollbar{display:none}
+    .tab{flex-shrink:0;padding:6px 14px;border:none;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+    .tab.active{background:#fff;color:#1a1a2e}
+    .section{display:none;padding:14px 14px 4px}
+    .section.active{display:block}
+    .section-inner{padding-bottom:calc(20px + env(safe-area-inset-bottom))}
+    .story{background:#fff;border-radius:12px;padding:13px 15px;margin-bottom:9px}
+    .story-meta{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-bottom:6px}
+    .badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px}
+    .badge-afcb{background:#cc0000;color:#fff}
+    .badge-ft{background:#f0f0ea;color:#888;border:1px solid #ddd}
+    .source{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:0.3px}
+    .story a{display:block;font-size:15px;font-weight:600;color:#1a1a2e;text-decoration:none;line-height:1.4;margin-bottom:5px}
+    .story a:active{opacity:0.6}
+    .story p{font-size:13px;color:#555;line-height:1.55}
+    .why{font-size:12px;color:#999;margin-top:5px;font-style:italic}
+    .feedback{margin:8px 0 0;background:#eeeee8;border-radius:10px;padding:13px 15px;font-size:13px;color:#666;line-height:1.55}
+    .feedback strong{color:#444}
+    .footer{padding:12px 0 4px;text-align:center;font-size:11px;color:#bbb}
   </style>
 </head>
 <body>
-
 <div class="sticky-top">
   <div class="hdr">
     <div class="hdr-top">
@@ -94,311 +46,239 @@
         <div class="hdr-label">Morning Briefing</div>
         <div class="hdr-title">Good morning, Tristan</div>
       </div>
-      <div class="hdr-time">Saturday<br>6 Jun<br>9:17am</div>
+      <div class="hdr-time">Sunday<br>7 Jun<br>2026</div>
     </div>
     <div class="tabs">
-      <button class="tab active" onclick="showTab('news',this)" aria-label="News">📰</button>
-      <button class="tab" onclick="showTab('finance',this)" aria-label="Finance">💰</button>
-      <button class="tab" onclick="showTab('ai',this)" aria-label="AI">🤖</button>
-      <button class="tab" onclick="showTab('football',this)" aria-label="Football">⚽</button>
-      <button class="tab" onclick="showTab('foryou',this)" aria-label="For You">🌍</button>
+      <button class="tab active" onclick="showTab('news',this)">&#x1F4F0; News</button>
+      <button class="tab" onclick="showTab('finance',this)">&#x1F4B0; Finance</button>
+      <button class="tab" onclick="showTab('ai',this)">&#x1F916; AI</button>
+      <button class="tab" onclick="showTab('football',this)">&#x26BD; Football</button>
+      <button class="tab" onclick="showTab('foryou',this)">&#x1F30D; For You</button>
     </div>
   </div>
 </div>
 
-<!-- NEWS -->
-<div id="tab-news" class="section active">
-  <div class="section-inner">
+<div id="tab-news" class="section active"><div class="section-inner">
 
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="badge badge-breaking">BREAKING</span>
-        <span class="source">CBS / Al Jazeera / ABC</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.cbsnews.com/live-updates/iran-us-war-talks-no-progress-israel-lebanon-hezbollah/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Iran peace talks at "deadlock" — $24bn in frozen assets the sticking point</a>
-      <div class="story-body"><p>A senior Iranian official told CNN that negotiations are at a deadlock and Trump must act to break it. Iran demands $24bn in frozen assets as a precondition. Overnight, US forces hit Iranian radar sites on Qeshm Island; Iran retaliated with strikes that hit Kuwait International Airport, killing one Indian national and suspending all flights.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">CNN / NPR</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.cnn.com/2026/06/05/world/live-news/iran-trump-lebanon-israel-war-news" target="_blank" rel="noopener" onclick="event.stopPropagation()">US House votes to end the Iran war — a rare break with Trump</a>
-      <div class="story-body"><p>Congress passed a resolution to end US military involvement in the Iran conflict, demonstrating a fracture between the GOP-majority legislature and the Trump White House. The Senate separately passed Trump's immigration enforcement funding bill early Friday.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">Reuters / BBC</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.aljazeera.com/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Russia's overnight barrage on Ukraine kills 18 — 73 missiles, 656 drones</a>
-      <div class="story-body"><p>One of the largest single-night attacks of the conflict struck Kyiv, Dnipro, Zaporizhzhia, Poltava, and Kharkiv. Ukraine's air defences intercepted the majority. The scale drew sharp condemnation from European allies and fresh calls for expanded air defence support.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">Al Jazeera / Reuters</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.aljazeera.com/news/liveblog/2026/6/5/iran-war-live-hezbollah-rejects-truce-as-israel-continues-lebanon-strikes" target="_blank" rel="noopener" onclick="event.stopPropagation()">20+ killed in Lebanon as Hezbollah rejects ceasefire and clashes intensify</a>
-      <div class="story-body"><p>Israeli strikes killed over 20 people in Lebanon on Friday. Hezbollah rejected the ceasefire deal brokered by Lebanon's government. Lebanon's president has publicly criticised Iran, signalling growing domestic frustration with the conflict's spillover.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">BBC News</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.bbc.co.uk/news/business" target="_blank" rel="noopener" onclick="event.stopPropagation()">Bank of England holds at 3.75% — warns Iran war will push UK inflation higher</a>
-      <div class="story-body"><p>The BoE kept rates unchanged but warned the Iran conflict will drive inflation higher in the near term. The FTSE 100 crossed 10,000 for the first time in its history this week, though geopolitical risk tempers the milestone.</p></div>
-    </div>
-
+  <div class="story">
+    <div class="story-meta"><span class="source">BBC News</span></div>
+    <a href="https://www.bbc.com/news/world-middle-east" target="_blank" rel="noopener">Israel-US military action against Iran: latest developments</a>
+    <p>BBC News led its daily briefing with coverage of the ongoing Israel-US military confrontation with Iran. The conflict continues to dominate international news as diplomatic and military developments unfold rapidly.</p>
   </div>
-</div>
 
-<!-- FINANCE -->
-<div id="tab-finance" class="section">
-  <div class="section-inner">
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="badge badge-breaking">BREAKING</span>
-        <span class="source">TheStreet / Bloomberg</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-june-05-2026" target="_blank" rel="noopener" onclick="event.stopPropagation()">Equities: Nasdaq −4.2%, S&amp;P −2.6% — chip selloff wipes $1 trillion</a>
-      <div class="story-body"><p>Worst Nasdaq session since April 2025. Marvell −16%, Micron −13%, Intel/AMD ~−11%, Broadcom −7% — triggered by Broadcom's AI networking revenue miss ($4.1bn vs $4.8bn expected). Philadelphia Semi Index fell 10.3%, steepest drop since March 2020.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">CNBC / Bloomberg</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.cnbc.com/2026/06/03/stock-market-today-live-updates.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">Rates: 10yr UST yield spikes to 4.54% on blowout payrolls</a>
-      <div class="story-body"><p>172,000 jobs added in May — roughly double forecasts — drove the 10yr above 4.54% and the 30yr above 5%, sparking the equity selloff. Fed futures now price zero cuts in 2026. The Dow had hit a record 51,561 Thursday before falling 1.4% Friday.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">Bloomberg / Reuters</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.bloomberg.com/markets" target="_blank" rel="noopener" onclick="event.stopPropagation()">FX: Dollar surges on yield spike; GBP/USD holding 1.33</a>
-      <div class="story-body"><p>The DXY rallied sharply after the payrolls print as rate differentials widened in the dollar's favour. GBP relatively resilient near 1.33 after the BoE hold, but EURUSD slipped back below 1.08. JPY weakened further, BOJ watching closely.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">Bloomberg / FT</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.bloomberg.com/markets" target="_blank" rel="noopener" onclick="event.stopPropagation()">Commodities: Gold up 3.1% to $4,365/oz; oil elevated on Iran disruption</a>
-      <div class="story-body"><p>Gold extended its safe-haven rally as Iran war uncertainty and rate uncertainty drove demand. Crude remained elevated with Strait of Hormuz shipping disruption fears — Kuwait airport attack adding to supply anxiety. Iran conflict keeping a risk premium in energy prices.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">Bloomberg</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.cnbc.com/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Credit/IPO: SpaceX roadshow launches — $75bn, pricing June 11</a>
-      <div class="story-body"><p>SpaceX targets up to $75bn at ~$1.75 trillion valuation — potentially the largest IPO in history. 30% of float allocated to retail via Robinhood, Fidelity, Schwab. Pricing June 11, trading (SPCX on Nasdaq) June 12. Goldman Sachs leading a 21-bank syndicate.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="badge badge-ft">FT · headline only</span>
-        <span class="source">Financial Times</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.ft.com/" target="_blank" rel="noopener" onclick="event.stopPropagation()">FTSE 100 crosses 10,000 for the first time</a>
-      <div class="story-body"><p>London's flagship index hit the historic milestone amid global market strength, though the BoE's inflation warnings and Iran war uncertainty are already tempering investor optimism about how long it can hold the level.</p></div>
-    </div>
-
+  <div class="story">
+    <div class="story-meta"><span class="source">Reuters</span></div>
+    <a href="https://www.reuters.com/business/aerospace-defense/spacex-ipo" target="_blank" rel="noopener">SpaceX sets IPO price at $135 per share in $75 billion offering</a>
+    <p>SpaceX plans to sell 555.6 million shares at a fixed price of $135 each, in an offering that would value the rocket and satellite company at $1.75 trillion — one of the largest public listings in history.</p>
   </div>
-</div>
 
-<!-- AI -->
-<div id="tab-ai" class="section">
-  <div class="section-inner">
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">OpenAI / The Verge</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://openai.com/index/chatgpt-memory-dreaming/" target="_blank" rel="noopener" onclick="event.stopPropagation()">ChatGPT's biggest memory overhaul: Dreaming V3 rolls out to Plus and Pro</a>
-      <div class="story-body"><p>OpenAI's new architecture runs background synthesis after every conversation, automatically updating your profile without prompting. Tracks stale context (trips taken, finished projects) as well as current. 5× more compute-efficient, enabling an eventual free-tier rollout. Privacy researchers are already flagging concerns about unilateral profile-building.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">TechCrunch / Anthropic</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://techcrunch.com/2026/06/01/anthropic-files-to-go-public/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Anthropic files confidential S-1 at $965bn — also calls for coordinated AI pause mechanism</a>
-      <div class="story-body"><p>Anthropic filed its IPO S-1 (revenue run-rate ~$47bn/month, $65bn Series H). In a separate move, urging all frontier AI labs to agree on a coordinated mechanism to slow development if systems begin self-improving faster than society can manage. Notable: Anthropic pays SpaceX $1.25bn/month for compute.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">Roll Call / Ars Technica</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://rollcall.com/2026/06/04/bipartisan-ai-draft-proposes-three-year-preemption-of-state-laws/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Congress drops 269-page "Great American AI Act" — would freeze state AI laws for 3 years</a>
-      <div class="story-body"><p>Reps. Obernolte and Trahan's bipartisan draft would preempt all state AI regulation (California, Colorado) for three years while a federal standard is developed. Labour unions rejected it immediately; tech groups applauded. Still a discussion draft — and Colorado's law goes live June 30 regardless.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">CNBC / Microsoft</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.cnbc.com/2026/06/02/microsoft-unveils-new-ai-models-lessen-reliance-on-openai-lower-costs.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">Microsoft's 7 in-house MAI models signal a strategic break from OpenAI</a>
-      <div class="story-body"><p>The MAI family — MAI-Code-1-Flash, MAI-Image-2.5 (above Gemini in Arena rankings), MAI-Transcribe-1.5 (5× faster across 43 languages), MAI-Voice-2 and more — all trained in-house. Announced weeks before OpenAI's IPO. Deliberate.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">Build Fast with AI</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-6-2026" target="_blank" rel="noopener" onclick="event.stopPropagation()">Alibaba's Qwen 3.7 Max matches Claude on benchmarks at half the cost — Sonnet 4.8 mid-June</a>
-      <div class="story-body"><p>Qwen 3.7 Max scores within striking distance of Claude Opus 4.7 at ~$1.50/$6 per million tokens vs Claude Sonnet 4.6's $3/$15. A source-map accidentally shipped in the Claude Code npm package points to a Sonnet 4.8 release targeting mid-June that could significantly reset enterprise pricing.</p></div>
-    </div>
-
+  <div class="story">
+    <div class="story-meta"><span class="source">The Guardian</span></div>
+    <a href="https://www.theguardian.com/technology/artificial-intelligence" target="_blank" rel="noopener">US Congress unveils sweeping 269-page federal AI regulation bill</a>
+    <p>Representatives Jay Obernolte and Lori Trahan introduced the Great American Artificial Intelligence Act, the most comprehensive federal AI framework ever put forward by Congress, covering safety, liability, and industry standards.</p>
   </div>
-</div>
 
-<!-- FOOTBALL -->
-<div id="tab-football" class="section">
-  <div class="section-inner">
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="badge badge-afcb">AFCB</span>
-        <span class="source">Sky Sports / Transfermarkt</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.skysports.com/football/live-blog/11743/13279286/bournemouth-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights" target="_blank" rel="noopener" onclick="event.stopPropagation()">Senesi joins Tottenham on 4-year deal — Diomandé identified as replacement</a>
-      <div class="story-body"><p>Marcos Senesi has agreed to join Spurs on a four-year contract — Bournemouth's first confirmed departure of the summer. The club has already identified 22-year-old Ivorian international Ousmane Diomandé as a target to replace him. Reports suggest Iraola could also mount a triple raid on Bournemouth players for Liverpool.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="badge badge-afcb">AFCB</span>
-        <span class="source">Caught Offside / Sky Sports</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.caughtoffside.com/2026/06/04/liverpool-transfer-raid-bournemouth-andoni-iraola/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Iraola set to raid Bournemouth for players as Liverpool rebuild begins</a>
-      <div class="story-body"><p>Incoming Liverpool boss Andoni Iraola is targeting multiple Bournemouth players — with Alex Scott (also linked to Manchester United) and Eli Junior Kroupi (Arsenal, PSG interest) most sought-after. Bournemouth are keen to tie Scott to a new contract before he's poached.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="badge badge-afcb">AFCB</span>
-        <span class="source">AFC Bournemouth / PL</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.premierleague.com/en/news/4673195/the-briefing-bournemouths-rose-era-begins-latest-transfer-news-and-more/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Marco Rose gives first interview — praises squad, transfer business expected soon</a>
-      <div class="story-body"><p>The new Cherries boss (ex-Dortmund, Mönchengladbach, RB Leipzig) praised the squad's "individual quality" and "experienced captain in Adam Smith." Backroom staff Marco Kurth and Frank Geideck join him. Window opens June 15.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="badge badge-afcb">AFCB</span>
-        <span class="source">Sky Sports</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.skysports.com/bournemouth" target="_blank" rel="noopener" onclick="event.stopPropagation()">Iraola confirmed as Liverpool head coach — taking four AFCB backroom staff</a>
-      <div class="story-body"><p>Andoni Iraola, who guided Bournemouth to their historic 6th-place finish and first European campaign, is confirmed as Liverpool's new head coach succeeding Arne Slot. Reports suggest four Vitality Stadium backroom staff will follow him to Anfield.</p></div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">Premier League / ESPN</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.premierleague.com/en/transfers/2026-27/summer" target="_blank" rel="noopener" onclick="event.stopPropagation()">Transfer window opens June 15, fixture list June 19 — World Cup in 5 days</a>
-      <div class="story-body"><p>The summer window officially opens Monday 15 June; 2026/27 fixtures release Friday 19 June at 10:00 BST. The World Cup starts June 11, pushing the new PL season to 22 August. Promoted: Coventry City, Ipswich Town, Hull City.</p></div>
-    </div>
-
+  <div class="story">
+    <div class="story-meta"><span class="source">Sky News</span></div>
+    <a href="https://www.skynews.com/story/uber-robotaxis-spain" target="_blank" rel="noopener">Uber launches robotaxi service in Spain in major European expansion</a>
+    <p>Uber has begun rolling out its autonomous vehicle taxi service in Spain, marking a significant step in its European self-driving ambitions as driverless transport edges closer to mainstream adoption.</p>
   </div>
-</div>
 
-<!-- FOR YOU -->
-<div id="tab-foryou" class="section">
-  <div class="section-inner">
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">Nature / Scientific American</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.scientificamerican.com/" target="_blank" rel="noopener" onclick="event.stopPropagation()">AI-designed universal coronavirus vaccine passes first human trial safely</a>
-      <div class="story-body">
-        <p>Scientists successfully tested an AI-designed vaccine that generated immune responses against multiple coronaviruses including SARS-CoV-2, with no safety issues. The design cycle took months instead of years.</p>
-        <p class="why">Why I picked this: The same AI wave reshaping software is now doing it for drug discovery — first AI-designed broad-spectrum coronavirus vaccine to reach human testing.</p>
-      </div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">NASA / Science News</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.sciencenews.org/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Webb telescope detects methane on interstellar comet 3I/ATLAS — a first for any visitor from another star</a>
-      <div class="story-body">
-        <p>The James Webb Space Telescope identified methane in interstellar comet 3I/ATLAS — the first direct detection on an object from outside our solar system. Only the third interstellar object ever found, it's giving scientists their first chemical fingerprint of another planetary system.</p>
-        <p class="why">Why I picked this: We're reading the chemistry of another star system from an object that fell into ours — science fiction made real, this week.</p>
-      </div>
-    </div>
-
-    <div class="story" onclick="toggle(event,this)">
-      <div class="story-meta">
-        <span class="source">Science News / Dartmouth</span>
-        <span class="caret">›</span>
-      </div>
-      <a href="https://www.sciencenews.org/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Octopuses can use mirrors to find hidden food — joining an exclusive vertebrate-only club</a>
-      <div class="story-body">
-        <p>Dartmouth researchers showed octopuses can use mirror reflections to locate food hidden from direct view — previously only documented in vertebrates like apes, dolphins, and corvids. Octopuses share no common ancestor with any of those animals.</p>
-        <p class="why">Why I picked this: Every octopus cognition study is a gift. Independent evolution of sophisticated visual reasoning in a mollusc has no satisfying explanation yet.</p>
-      </div>
-    </div>
-
-    <div class="feedback">
-      <strong>💬 Refine tomorrow's briefing</strong><br>
-      Open Claude and say things like "skip crypto news", "more science please", or "I liked the space story" — I'll update your preferences.
-    </div>
-    <div class="footer">tristanabc.github.io/briefing · Delivered by Claude</div>
-
+  <div class="story">
+    <div class="story-meta"><span class="source">BBC News</span></div>
+    <a href="https://www.bbc.com/news/science-environment" target="_blank" rel="noopener">NASA's X-59 quiet supersonic jet prepares to break the sound barrier for the first time</a>
+    <p>Engineers are preparing the experimental X-59 aircraft for its first supersonic flight, with the jet designed to fly at up to Mach 1.6 at 60,000 feet while producing only a quiet thump instead of a disruptive sonic boom.</p>
   </div>
-</div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Reuters</span></div>
+    <a href="https://www.reuters.com/business/healthcare" target="_blank" rel="noopener">GLP-1 weight-loss drugs linked to 30% reduction in breast cancer risk, major study finds</a>
+    <p>A large-scale study found that women taking GLP-1 receptor agonist drugs such as Ozempic and Wegovy were about 30% less likely to develop breast cancer — a finding that could reshape how the drugs are prescribed beyond diabetes and obesity.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Reuters</span></div>
+    <a href="https://www.reuters.com/technology/byd-humanoid-robots" target="_blank" rel="noopener">BYD confirms entry into humanoid robotics sector</a>
+    <p>Chinese electric vehicle giant BYD has officially confirmed it is entering the humanoid robotics market, putting it in direct competition with Tesla, Boston Dynamics, and a wave of Chinese rivals including Unitree and Agibot.</p>
+  </div>
+
+</div></div>
+
+<div id="tab-finance" class="section"><div class="section-inner">
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Reuters</span></div>
+    <a href="https://www.reuters.com/business/spacex-ipo" target="_blank" rel="noopener">SpaceX IPO priced at $135/share — $1.75 trillion valuation in $75 billion offering</a>
+    <p>SpaceX's planned public listing at $135 per share would be one of the largest IPOs ever, giving the Elon Musk-controlled rocket and Starlink satellite company a valuation of $1.75 trillion and dwarfing most of the S&P 500.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">CNBC</span></div>
+    <a href="https://www.cnbc.com/2026/06/02/stock-market-today-live-updates.html" target="_blank" rel="noopener">US payrolls: private hiring beat expectations with 122,000 jobs added in May</a>
+    <p>ADP private payrolls data showed 122,000 workers hired in May, up from 105,000 in April and ahead of the consensus estimate of 110,000, signalling continued labour market resilience despite elevated interest rates.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">CNBC</span></div>
+    <a href="https://www.cnbc.com/2026/06/02/stock-market-today-live-updates.html" target="_blank" rel="noopener">GameStop surges 9% after first-quarter earnings beat</a>
+    <p>GameStop shares jumped in premarket trading after the retailer posted better-than-expected Q1 results, reinvigorating retail investor interest in the meme stock that has had a rollercoaster few years.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Bloomberg</span></div>
+    <a href="https://www.bloomberg.com/markets" target="_blank" rel="noopener">US services sector growth slows slightly — ISM index at 53.6 in May</a>
+    <p>The ISM services index came in at 53.6 for May, down 0.4 points from April but still comfortably in expansion territory. Any reading above 50 indicates growth in the sector, which accounts for the bulk of US economic activity.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Bloomberg</span></div>
+    <a href="https://www.bloomberg.com/markets" target="_blank" rel="noopener">Roth IRA contributions dominate as savers lock in tax-free growth</a>
+    <p>After-tax Roth accounts captured the majority of IRA contributions in Q1 2026, while Roth conversions rose 41% year-on-year, as investors seek to shelter long-term gains ahead of potential tax policy changes.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Bloomberg</span></div>
+    <a href="https://www.bloomberg.com/ai" target="_blank" rel="noopener">Anthropic valued at $965 billion after $65 billion funding round — surpasses OpenAI</a>
+    <p>Anthropic's latest funding round at a $965 billion post-money valuation pushed the Claude-maker past OpenAI's $852 billion private market value, marking a significant shift in the competitive dynamics of the AI industry.</p>
+  </div>
+
+</div></div>
+
+<div id="tab-ai" class="section"><div class="section-inner">
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Build Fast with AI</span></div>
+    <a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-5-2026" target="_blank" rel="noopener">Anthropic raises $65 billion at $965 billion valuation, overtaking OpenAI</a>
+    <p>In the largest AI funding round to date, Anthropic surpassed OpenAI's private valuation for the first time. The investment signals continued investor confidence in frontier AI development despite growing calls for regulation.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">LLM Stats</span></div>
+    <a href="https://llm-stats.com/ai-news" target="_blank" rel="noopener">Gemini 3.5 Flash now generally available — frontier intelligence at 4x the speed</a>
+    <p>Google's Gemini 3.5 Flash became generally available this week, offering performance comparable to frontier models but at four times the speed of comparable systems, intensifying competition in the fast-inference AI market.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Build Fast with AI</span></div>
+    <a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-1-2026" target="_blank" rel="noopener">ChatGPT crosses one billion monthly active users</a>
+    <p>OpenAI's ChatGPT has reached the symbolic milestone of one billion monthly active users, cementing its status as one of the fastest-growing consumer applications in history since its late 2022 launch.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Medium / David Akpovi</span></div>
+    <a href="https://medium.com/@davidakpovi/ai-news-week-of-june-1-to-june-7-2026-7957940c805a" target="_blank" rel="noopener">OpenAI launches Dreaming V3 — most significant ChatGPT memory upgrade ever</a>
+    <p>OpenAI began rolling out the Dreaming V3 memory architecture to ChatGPT Plus and Pro users in the US, described as the most significant memory improvement since the original ChatGPT launch, enabling far richer persistent context across conversations.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">The Guardian</span></div>
+    <a href="https://www.theguardian.com/technology/artificial-intelligence" target="_blank" rel="noopener">Congress introduces 269-page Great American Artificial Intelligence Act</a>
+    <p>Representatives Obernolte and Trahan unveiled the most comprehensive federal AI legislation yet proposed, covering safety standards, liability frameworks, and industry accountability in a 269-page discussion draft.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">AI News</span></div>
+    <a href="https://www.artificialintelligence-news.com/" target="_blank" rel="noopener">French startup Zenkolab uses AI to detect eye diseases from retinal images</a>
+    <p>Paris-based Zenkolab developed an AI system that analyses retinal scans to detect certain eye diseases at early stages, a development that could bring affordable diagnostic screening to regions with limited access to ophthalmologists.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Reuters</span></div>
+    <a href="https://www.reuters.com/technology/byd-robotics" target="_blank" rel="noopener">BYD enters humanoid robotics — joining Tesla and Boston Dynamics in the race</a>
+    <p>BYD's move into humanoid robots puts the world's largest EV maker into direct competition with Tesla's Optimus and a rapidly expanding field of Chinese rivals, as the market for general-purpose robots heats up dramatically.</p>
+  </div>
+
+</div></div>
+
+<div id="tab-football" class="section"><div class="section-inner">
+
+  <div class="story">
+    <div class="story-meta">
+      <span class="badge badge-afcb">AFCB</span>
+      <span class="source">Premier League</span>
+    </div>
+    <a href="https://www.premierleague.com/en/clubs/91/bournemouth/overview" target="_blank" rel="noopener">Bournemouth secure Europa League football for 2026/27 season</a>
+    <p>AFC Bournemouth secured European football on the final day of the Premier League season, qualifying for the Europa League — a historic achievement for the Cherries that continues the club's remarkable rise under recent management.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta">
+      <span class="badge badge-afcb">AFCB</span>
+      <span class="source">Sky Sports</span>
+    </div>
+    <a href="https://www.skysports.com/football/news/11095/13546159/premier-league-26-27-season-start-date-fixture-release-final-day-live-sky-sports-games-and-match-schedule" target="_blank" rel="noopener">Iraola confirmed as Liverpool manager — former Bournemouth boss heads to Anfield</a>
+    <p>Liverpool have confirmed the appointment of Andoni Iraola as their new head coach. The Spaniard, who transformed Bournemouth into a top-half Premier League side, makes the high-profile step up to one of the biggest clubs in the world.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Premier League</span></div>
+    <a href="https://www.premierleague.com/en/news/4671514/summer-2026-key-football-dates-for-your-calendar" target="_blank" rel="noopener">Summer transfer window opens June 15 — key dates for 2026</a>
+    <p>The Premier League and EFL summer transfer window opens on Monday 16 June and closes 10 days after the season begins, on Tuesday 1 September at 11pm UK time. The 2026/27 fixture list will be published on 19 June at 10:00 BST.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">ESPN</span></div>
+    <a href="https://www.espn.com/soccer/story/_/id/48944912/premier-league-efl-summer-transfer-window-2026-dates-does-open-deadline-day" target="_blank" rel="noopener">Premier League transfer window 2026: everything you need to know</a>
+    <p>ESPN has a full breakdown of the summer 2026 transfer window dates, including when clubs can officially begin signing players, international window timings, and key Deadline Day to watch ahead of next season.</p>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Premier League</span></div>
+    <a href="https://www.premierleague.com/en/video/4673238/watch-premier-league-table-resets-for-202627" target="_blank" rel="noopener">Premier League table resets — the 2026/27 season is coming</a>
+    <p>The Premier League has reset the table ahead of the 2026/27 campaign, which is due to kick off in the coming weeks. All 20 clubs go back to zero points as the new season approaches.</p>
+  </div>
+
+</div></div>
+
+<div id="tab-foryou" class="section"><div class="section-inner">
+
+  <div class="story">
+    <div class="story-meta">
+      <span class="badge badge-afcb">AFCB</span>
+      <span class="source">Premier League</span>
+    </div>
+    <a href="https://www.premierleague.com/en/clubs/91/bournemouth/overview" target="_blank" rel="noopener">Bournemouth are in the Europa League — the Cherries go European</a>
+    <p>Bournemouth secured Europa League qualification on the final day of the season, a remarkable milestone for a club that was in the Championship not long ago.</p>
+    <div class="why">⭐ Picked for you: Bournemouth fan must-read — the Cherries will be playing European football next season.</div>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Reuters</span></div>
+    <a href="https://www.reuters.com/business/spacex-ipo" target="_blank" rel="noopener">SpaceX IPO: $1.75 trillion valuation in one of history's biggest listings</a>
+    <p>SpaceX is set to go public at $135/share in a $75 billion offering — a deal that would make it one of the most valuable companies ever to list on a stock exchange.</p>
+    <div class="why">⭐ The biggest corporate finance story of the year: SpaceX's long-awaited IPO finally has a number attached to it.</div>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Build Fast with AI</span></div>
+    <a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-5-2026" target="_blank" rel="noopener">Anthropic overtakes OpenAI in valuation after $65 billion raise</a>
+    <p>At $965 billion, Anthropic — the maker of Claude — is now worth more than OpenAI in private markets, a seismic shift in the AI industry's competitive landscape.</p>
+    <div class="why">⭐ A landmark moment in AI: the company behind the assistant you're reading right now just surpassed OpenAI in private valuation.</div>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">Reuters / Science</span></div>
+    <a href="https://www.reuters.com/business/healthcare" target="_blank" rel="noopener">Ozempic-class drugs cut breast cancer risk by 30% in major study</a>
+    <p>GLP-1 drugs already transforming obesity and diabetes treatment may have a powerful anti-cancer effect — a finding with massive implications for how millions of prescriptions are written.</p>
+    <div class="why">⭐ One of the biggest medical findings of 2026 so far — GLP-1 drugs may do far more than manage weight.</div>
+  </div>
+
+  <div class="story">
+    <div class="story-meta"><span class="source">NASA / BBC Science</span></div>
+    <a href="https://www.bbc.com/news/science-environment" target="_blank" rel="noopener">NASA's X-59 is about to go supersonic — quietly</a>
+    <p>The X-59 experimental jet is finally ready to break the sound barrier at Mach 1.6, generating only a soft thump instead of a boom — potentially paving the way for the return of supersonic passenger flight.</p>
+    <div class="why">⭐ Supersonic travel over land could come back: this test flight is a key step toward overturning the Concorde-era ban on supersonic overland flights.</div>
+  </div>
+
+  <div class="feedback"><strong>&#x1F4AC; Refine tomorrow's briefing</strong><br>Open Claude and say things like "skip crypto news" or "more science please".</div>
+  <div class="footer">tristanabc.github.io/briefing &middot; Delivered by Claude</div>
+
+</div></div>
 
 <script>
-function showTab(id, btn) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  btn.classList.add('active');
-  window.scrollTo(0, 0);
-}
-function toggle(e, card) {
-  if (e.target.closest('a')) return;
-  card.classList.toggle('open');
-}
-const last = sessionStorage.getItem('tab');
-if (last) {
-  const btn = document.querySelector('.tab[aria-label="' + last + '"]');
-  if (btn) showTab(last.toLowerCase(), btn);
-}
-document.querySelectorAll('.tab').forEach(btn => {
-  btn.addEventListener('click', () => sessionStorage.setItem('tab', btn.getAttribute('aria-label')));
-});
+function showTab(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');window.scrollTo(0,0);}
+const last=sessionStorage.getItem('tab');if(last){const btn=document.querySelector('[onclick*="\''+last+'\'"]');if(btn)showTab(last,btn);}
+document.querySelectorAll('.tab').forEach(btn=>{btn.addEventListener('click',()=>{const id=btn.getAttribute('onclick').match(/'(\w+)'/)[1];sessionStorage.setItem('tab',id);});});
 </script>
 </body>
 </html>
