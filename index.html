@@ -46,7 +46,7 @@
         <div class="hdr-label">Morning Briefing</div>
         <div class="hdr-title">Good morning, Tristan</div>
       </div>
-      <div class="hdr-time">Sunday<br>7 Jun<br>7:00am</div>
+      <div class="hdr-time" id="hdr-time"></div>
     </div>
     <div class="tabs">
       <button class="tab active" data-tab="news" onclick="showTab('news',this)">&#x1F4F0; News</button>
@@ -270,6 +270,7 @@
 </div></div>
 
 <script>
+var _d=new Date(),_days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],_months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];var _h=_d.getHours(),_m=_d.getMinutes(),_ampm=_h>=12?'pm':'am',_h12=_h%12||12;document.getElementById('hdr-time').innerHTML=_days[_d.getDay()]+'<br>'+_d.getDate()+' '+_months[_d.getMonth()]+'<br>'+_h12+':'+(_m<10?'0':'')+_m+_ampm;
 function showTab(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');window.scrollTo(0,0);}
 var st=sessionStorage.getItem('tab');if(st){var sb=document.querySelector('.tab[data-tab="'+st+'"]');if(sb)showTab(st,sb);}
 document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){sessionStorage.setItem('tab',b.getAttribute('data-tab'));});});
